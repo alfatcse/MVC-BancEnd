@@ -1,0 +1,41 @@
+let users=[
+    {
+        id:1,
+        gender:"male",
+        name:"alfat",
+        contact:"0172",
+        address:"Bang",
+        photoUrl:"https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
+    },
+    {
+        id:2,
+        gender:"female",
+        name:"jahan",
+        contact:"0172",
+        address:"Bang",
+        photoUrl:"https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
+    },
+    {
+        id:3,
+        gender:"male",
+        name:"rony",
+        contact:"0172",
+        address:"Bang",
+        photoUrl:"https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
+    },
+    {
+        id:4,
+        gender:"male",
+        name:"korim",
+        contact:"0172",
+        address:"Bang",
+        photoUrl:"https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
+    }
+]
+module.exports.getAllUsers=async(req,res,next)=>{
+    try{
+       return res.status(200).json({success:true,data:users})
+    }catch(error){
+        next(error);
+    }
+}
