@@ -88,6 +88,15 @@ let users = [
     address: "Bang",
     photoUrl:
       "https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg",
+  },
+  {
+    id: 10,
+    gender: "male",
+    name: "korim",
+    contact: "0172",
+    address: "Bang",
+    photoUrl:
+      "https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg",
   }
 ];
 module.exports.getAllUsers = async (req, res, next) => {
