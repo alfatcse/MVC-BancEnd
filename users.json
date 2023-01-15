@@ -17,17 +17,17 @@
   },
   {
     "id": 2,
-    "gender": "male",
-    "name": "rony",
-    "contact": "0172",
+    "gender": "diverse",
+    "name": "ab",
+    "contact": "77777",
     "address": "Bang",
     "photoUrl": "https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
   },
   {
     "id": 3,
-    "gender": "male",
-    "name": "korim",
-    "contact": "0172",
+    "gender": "diverse",
+    "name": "cd",
+    "contact": "77777",
     "address": "Bang",
     "photoUrl": "https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
   },
@@ -112,7 +112,7 @@
     "photoUrl": "https://res.cloudinary.com/dmsgdonea/image/upload/v1669070726/fox_family16_fskfno.jpg"
   },
   {
-    "id": "12",
+    "id": 12,
     "gender": "male",
     "name": "Nahid",
     "contact": "0172",
