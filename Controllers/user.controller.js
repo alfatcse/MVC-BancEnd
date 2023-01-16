@@ -121,3 +121,11 @@ module.exports.updateBulk = async (req, res, next) => {
     next(error);
   }
 };
+module.exports.deleteUser = async (req, res, next) => {
+  try {
+    console.log(req.params)
+    return res.status(203).json({ success: false, data: "Can not update" });
+  } catch (error) {
+    next(error);
+  }
+};

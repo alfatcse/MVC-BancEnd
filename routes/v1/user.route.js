@@ -7,4 +7,5 @@ router.route('/random').get(controller.getRandomUser)
 router.route('/save').post(controller.saveUserData)
 router.route('/update/:id').patch(controller.updateUserData)
 router.route('/bulkUpdate').patch(controller.updateBulk)
+router.route('/delete/:id').delete(controller.deleteUser)
 module.exports=router;
