@@ -1,9 +1,20 @@
 const users = require("../users.json");
 const fs = require("fs");
 const { use } = require("../routes/v1/user.route");
+const { getDb } = require("../utils/dbConnect");
 module.exports.getAllUsers = async (req, res, next) => {
   try {
-    return res.status(200).json({ success: true, data: users });
+    const { page, limit } = req.query;
+    console.log(page, limit);
+    const db = getDb();
+    const user = await db
+      .collection("users")
+      .find()
+      .skip(+page * +limit)
+      .limit(+limit)
+      .toArray();
+    console.log(user);
+    return res.status(200).json({ success: true, data: user });
   } catch (error) {
     next(error);
   }
@@ -23,24 +34,28 @@ module.exports.getRandomUser = async (req, res, next) => {
 module.exports.saveUserData = async (req, res, next) => {
   try {
     console.log("req", req.body);
-    if (
-      req.body.id &&
-      req.body.gender &&
-      req.body.name &&
-      req.body.contact &&
-      req.body.address &&
-      req.body.photoUrl
-    ) {
-      users.push(req.body);
-      fs.writeFile("users.json", JSON.stringify(users), function (err) {
-        if (err) throw err;
-      });
-      return res.status(200).json({ success: true, data: "done" });
-    } else {
-      return res
-        .status(201)
-        .json({ success: false, data: "Not update due to lack of data" });
-    }
+    // if (
+    //   req.body.id &&
+    //   req.body.gender &&
+    //   req.body.name &&
+    //   req.body.contact &&
+    //   req.body.address &&
+    //   req.body.photoUrl
+    // ) {
+    //   users.push(req.body);
+    //   fs.writeFile("users.json", JSON.stringify(users), function (err) {
+    //     if (err) throw err;
+    //   });
+    //   return res.status(200).json({ success: true, data: "done" });
+    // } else {
+    //   return res
+    //     .status(201)
+    //     .json({ success: false, data: "Not update due to lack of data" });
+    // }
+    const db = getDb();
+    const result = await db.collection("users").insertOne(req.body);
+    console.log(result);
+    res.send("done insert");
   } catch (error) {
     next(error);
   }
@@ -123,7 +138,7 @@ module.exports.updateBulk = async (req, res, next) => {
 };
 module.exports.deleteUser = async (req, res, next) => {
   try {
-    console.log(req.params)
+    console.log(req.params);
     return res.status(203).json({ success: false, data: "Can not update" });
   } catch (error) {
     next(error);
