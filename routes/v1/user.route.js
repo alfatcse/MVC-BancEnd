@@ -8,4 +8,5 @@ router.route('/save').post(controller.saveUserData)
 router.route('/update/:id').patch(controller.updateUserData)
 router.route('/bulkUpdate').patch(controller.updateBulk)
 router.route('/delete/:id').delete(controller.deleteUser)
+router.route('/userdetails').get(controller.getUserDetail)
 module.exports=router;

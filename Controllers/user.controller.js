@@ -2,6 +2,7 @@ const users = require("../users.json");
 const fs = require("fs");
 const { use } = require("../routes/v1/user.route");
 const { getDb } = require("../utils/dbConnect");
+const { ObjectId } = require("mongodb");
 module.exports.getAllUsers = async (req, res, next) => {
   try {
     const { page, limit } = req.query;
@@ -15,6 +16,17 @@ module.exports.getAllUsers = async (req, res, next) => {
       .toArray();
     console.log(user);
     return res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports.getUserDetail = async (req, res, next) => {
+  try {
+    const db=getDb();
+    const {id}=req.query;
+    console.log(id);
+    const userDetail=await db.collection('users').findOne({_id:ObjectId(id)});
+    return res.status(200).json({ success: true, data: userDetail });
   } catch (error) {
     next(error);
   }
